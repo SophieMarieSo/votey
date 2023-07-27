@@ -1,0 +1,17 @@
+Deploying 'Votey'
+   -----------------
+   > transaction hash:    0x62c27bf430420ff31b8cad5711731234dad6b9e1dc80251c7a74a651763e22ec
+   > Blocks: 2            Seconds: 17
+   > contract address:    0x0468bEc520b1352D3A7D129224007FFcCb69edeE
+   > block number:        10623740
+   > block timestamp:     1651762040
+   > account:             0xCBd2223497c1F5218b7F4DEe581Ee2C65324f539
+   > balance:             0.159487776783310625
+   > gas used:            1834991 (0x1bffef)
+   > gas price:           19.988124303 gwei
+   > value sent:          0 ETH
+   > total cost:          0.036678028202886273 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.036678028202886273 ETH

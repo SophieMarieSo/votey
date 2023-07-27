@@ -1,0 +1,30 @@
+{
+  "name": "votey-contract",
+  "version": "1.0.0",
+  "description": "voting smart contract project for voting dapp",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "truffle deploy --network rinkeby",
+    "print-abi": "node printAbi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Capstone3/votey-contract.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Capstone3/votey-contract/issues"
+  },
+  "homepage": "https://github.com/Capstone3/votey-contract#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^2.0.6"
+  }
+}

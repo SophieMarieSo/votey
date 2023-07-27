@@ -1,0 +1,882 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_placeID",
+        "type": "uint256"
+      }
+    ],
+    "name": "EndVote",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "candidate_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "place_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "total_vote",
+        "type": "uint256"
+      }
+    ],
+    "name": "Regestering_candidate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "voteCount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "time",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isStarted",
+        "type": "bool"
+      }
+    ],
+    "name": "VoteGenerate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "place_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "voter_address",
+        "type": "address"
+      }
+    ],
+    "name": "Voted",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "VoteStore",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "placeId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "time",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isStarted",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "registered",
+        "type": "bool"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "maker",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "imageUrl",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "candidateCount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "voterCount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "inviteCode",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "voteCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "voteIdStore",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "imageUrl",
+        "type": "string"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "inviteCode",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address[]",
+        "name": "register_voter",
+        "type": "address[]"
+      }
+    ],
+    "name": "generateVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getVoteCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_key",
+        "type": "uint256"
+      }
+    ],
+    "name": "getVote",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "placeId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "time",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isStarted",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "registered",
+            "type": "bool"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "maker",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "imageUrl",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "candidate_id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "candidate_name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "placeId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "vote_count",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Votey.Candidate[]",
+            "name": "candidates",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "candidateCount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "voterAddress",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct Votey.Voter[]",
+            "name": "voter",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "register_voter",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "voterCount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "inviteCode",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct Votey.Vote",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getVotes",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "placeId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "time",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isStarted",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "registered",
+            "type": "bool"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "maker",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "imageUrl",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "candidate_id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "candidate_name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "placeId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "vote_count",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Votey.Candidate[]",
+            "name": "candidates",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "candidateCount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "voterAddress",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct Votey.Voter[]",
+            "name": "voter",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "register_voter",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "voterCount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "inviteCode",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct Votey.Vote[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getRunningVote",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "placeId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "time",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isStarted",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "registered",
+            "type": "bool"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "maker",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "imageUrl",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "candidate_id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "candidate_name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "placeId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "vote_count",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Votey.Candidate[]",
+            "name": "candidates",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "candidateCount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "voterAddress",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct Votey.Voter[]",
+            "name": "voter",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "register_voter",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "voterCount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "inviteCode",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct Votey.Vote[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getClosedVote",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "placeId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "time",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isStarted",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "registered",
+            "type": "bool"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "maker",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "imageUrl",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "candidate_id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "candidate_name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "placeId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "vote_count",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Votey.Candidate[]",
+            "name": "candidates",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "candidateCount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "voterAddress",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct Votey.Voter[]",
+            "name": "voter",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "register_voter",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "voterCount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "inviteCode",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct Votey.Vote[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "getAllVotesId",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_voteId",
+        "type": "uint256"
+      }
+    ],
+    "name": "setCandidate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_voteId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCandidateCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_voteId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCandidate",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "candidate_id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "candidate_name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "placeId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vote_count",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Votey.Candidate[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_voteId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getVoter",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "voterAddress",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct Votey.Voter[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_voteId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_candidate_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "voterAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "inviteCodeInput",
+        "type": "string"
+      }
+    ],
+    "name": "addVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_placeID",
+        "type": "uint256"
+      }
+    ],
+    "name": "startVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_placeID",
+        "type": "uint256"
+      }
+    ],
+    "name": "endVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
